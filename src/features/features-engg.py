@@ -8,6 +8,12 @@ from nltk.stem import SnowballStemmer, WordNetLemmatizer
 from sklearn.feature_extraction.text import CountVectorizer
 import os
 from sklearn.model_selection import train_test_split
+import yaml
+
+with open('Hyper-Params.yaml', 'r') as file:
+    config = yaml.safe_load(file)
+
+max_features = config['feature-engg']['max_features']
 
 # Load and clean training data, dropping rows with missing 'content'
 train_data = pd.read_csv('data/processed/train.csv').dropna(subset=['content'])
@@ -23,7 +29,7 @@ X_test = test_data['content'].values
 y_test = test_data['sentiment'].values
 
 # Initialize Bag of Words vectorizer
-vectorizer = CountVectorizer()
+vectorizer = CountVectorizer(max_features=max_features)
 
 # Fit vectorizer on training data and transform it to feature vectors
 X_train_bow = vectorizer.fit_transform(X_train)

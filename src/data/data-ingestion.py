@@ -1,9 +1,12 @@
 import os
 import yaml
 import logging
-import pandas as pd
-import numpy as np
-from typing import Tuple
+
+with open('Hyper-Params.yaml', 'r') as file:
+    config = yaml.safe_load(file)
+
+test_size = config['data-ingestion']['test_size']   
+# Import train_test_split function to split data into training and testing sets
 from sklearn.model_selection import train_test_split
 
 # Configure logging

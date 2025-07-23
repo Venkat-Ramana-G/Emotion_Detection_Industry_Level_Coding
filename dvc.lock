@@ -5,8 +5,16 @@ stages:
     deps:
     - path: .\src\data\data-ingestion.py
       hash: md5
+<<<<<<< HEAD
       md5: bb7c84eab347959204ab835bcabb1c72
       size: 3464
+=======
+      md5: 1cea76544e0f73a35b2cbf5fd4c1d34e
+      size: 1706
+    params:
+      params.yaml:
+        data-ingestion.test_size: 0.4
+>>>>>>> 4bc8c91 (Initial Commit with countvect with hypertuning)
     outs:
     - path: .\data\raw\test.csv
       hash: md5
@@ -53,6 +61,7 @@ stages:
       size: 396218
     - path: .\src\features\features-engg.py
       hash: md5
+<<<<<<< HEAD
       md5: 55cc36a9510f559519ac1a270337e29e
       size: 4173
     outs:
@@ -64,11 +73,28 @@ stages:
       hash: md5
       md5: 28099c418df52dc33fb46843c54a0498
       size: 2200281
+=======
+      md5: f1397e67794912da80bb5a551ef3d195
+      size: 1904
+    params:
+      params.yaml:
+        feature-engg.max_features: 2500
+    outs:
+    - path: .\data\interim\test_bow.csv
+      hash: md5
+      md5: f46088a94fa1d9fce71be3d12bb46bbf
+      size: 10387623
+    - path: .\data\interim\train_bow.csv
+      hash: md5
+      md5: 4bfcad616c2f6bbe04fb55d08090c688
+      size: 41526295
+>>>>>>> 4bc8c91 (Initial Commit with countvect with hypertuning)
   modelling:
     cmd: python .\src\models\modelling.py
     deps:
     - path: .\data\interim\train_bow.csv
       hash: md5
+<<<<<<< HEAD
       md5: 28099c418df52dc33fb46843c54a0498
       size: 2200281
     - path: .\src\models\modelling.py
@@ -80,23 +106,54 @@ stages:
       hash: md5
       md5: 94185f5ad0b91f86aab6ea6312b86242
       size: 1010959
+=======
+      md5: 4bfcad616c2f6bbe04fb55d08090c688
+      size: 41526295
+    - path: .\src\models\modelling.py
+      hash: md5
+      md5: f513f233bdde029507c165238963152e
+      size: 921
+    params:
+      params.yaml:
+        modelling.max_depth: 10
+        modelling.n_estimators: 100
+    outs:
+    - path: models\random_forest_model.pkl
+      hash: md5
+      md5: 38aaf5ef69e72e697c24d478ca3d2e3f
+      size: 909091
+>>>>>>> 4bc8c91 (Initial Commit with countvect with hypertuning)
   model-evaluation:
     cmd: python .\src\models\model-evaluate.py
     deps:
     - path: .\data\interim\test_bow.csv
       hash: md5
+<<<<<<< HEAD
       md5: ee9046f0676d00e684693d64935946bb
       size: 943437
+=======
+      md5: f46088a94fa1d9fce71be3d12bb46bbf
+      size: 10387623
+>>>>>>> 4bc8c91 (Initial Commit with countvect with hypertuning)
     - path: .\src\models\model-evaluate.py
       hash: md5
       md5: ebfe8b0c862b7c648192157a722ff505
       size: 3200
     - path: models\random_forest_model.pkl
       hash: md5
+<<<<<<< HEAD
       md5: 94185f5ad0b91f86aab6ea6312b86242
       size: 1010959
     outs:
     - path: .\reports\eval_metrics.json
       hash: md5
       md5: d91f6eeb90a7a62b534d3d1b92c844be
+=======
+      md5: 38aaf5ef69e72e697c24d478ca3d2e3f
+      size: 909091
+    outs:
+    - path: .\reports\eval_metrics.json
+      hash: md5
+      md5: 2f372a92dfdfa1a0b61b768489839c4e
+>>>>>>> 4bc8c91 (Initial Commit with countvect with hypertuning)
       size: 148

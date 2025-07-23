@@ -8,7 +8,7 @@ import pandas as pd
 import os
 import yaml
 
-with open('Hyper-Params.yaml', 'r') as file:
+with open('Params.yaml', 'r') as file:
     config = yaml.safe_load(file)
 
 test_size = config['data-ingestion']['test_size']   

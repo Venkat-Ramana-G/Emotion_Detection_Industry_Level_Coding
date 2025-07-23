@@ -10,7 +10,7 @@ import os
 from sklearn.model_selection import train_test_split
 import yaml
 
-with open('Hyper-Params.yaml', 'r') as file:
+with open('Params.yaml', 'r') as file:
     config = yaml.safe_load(file)
 
 max_features = config['feature-engg']['max_features']

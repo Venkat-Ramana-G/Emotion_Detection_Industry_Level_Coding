@@ -4,7 +4,7 @@ import pickle
 import yaml
 from sklearn.ensemble import RandomForestClassifier
 
-with open('Hyper-Params.yaml', 'r') as file:
+with open('Params.yaml', 'r') as file:
     config = yaml.safe_load(file)
 
 n_estimators = config['modelling']['n_estimators']
